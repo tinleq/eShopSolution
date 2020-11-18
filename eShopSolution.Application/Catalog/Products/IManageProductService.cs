@@ -20,6 +20,8 @@ namespace eShopSolution.Application.Catalog.Products
 
         Task<int> Delete(int productId);
 
+        Task<ProductViewModel> GetById(int productId, string languageId);
+
         Task<PageResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
 
         Task<int> AddImages(int productId, List<IFormFile> files);
