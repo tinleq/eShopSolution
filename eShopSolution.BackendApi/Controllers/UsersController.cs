@@ -18,28 +18,11 @@ namespace eShopSolution.BackendApi.Controllers
         public UsersController(IUserService userService)
         {
             _userService = userService;
-        }
-
-        //[HttpPost("authenticate")]
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Authenticate([FromForm] LoginRequest request)
-        //{
-
-        //    if(!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    var resultToken = await _userService.Authenticate(request);
-        //    if(string.IsNullOrEmpty(resultToken))
-        //    {
-        //        return BadRequest("UserName or password is incorrect.");
-        //    }
-        //    return Ok(new { token = resultToken });
-        //}
+        }       
 
         [HttpPost("authenticate")]
         [AllowAnonymous]
-        public async Task<IActionResult> Authenticate([FromForm] LoginRequest request)
+        public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,12 +32,12 @@ namespace eShopSolution.BackendApi.Controllers
             {
                 return BadRequest("Username or password is incorrect.");
             }
-            return Ok(new { token = resultToken });
+            return Ok(resultToken);
         }
 
         [HttpPost("register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Authenticate([FromForm] RegisterRequest request)
+        public async Task<IActionResult> Authenticate([FromBody] RegisterRequest request)
         {
 
             if (!ModelState.IsValid)
