@@ -21,7 +21,6 @@ namespace eShopSolution.BackendApi.Controllers
         {
             _userService = userService;
         }       
-
         [HttpPost("authenticate")]
         [AllowAnonymous]
         public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)

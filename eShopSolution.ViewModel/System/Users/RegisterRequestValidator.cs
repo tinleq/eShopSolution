@@ -30,7 +30,7 @@ namespace eShopSolution.ViewModel.System.Users
 
             RuleFor(x => x).Custom((request, context) =>
             {
-                if (request.Password != request.ConfirmPasword)
+                if (request.Password != request.ConfirmPassword)
                 {
                     context.AddFailure("Confirm password is not match");
                 }
