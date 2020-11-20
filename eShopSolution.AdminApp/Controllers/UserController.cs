@@ -21,7 +21,7 @@ namespace eShopSolution.AdminApp.Controllers
             _configuration = configuration;
         }
 
-        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 10)
+        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 5)
         {
             var request = new GetUserPagingRequest()
             {
@@ -31,6 +31,31 @@ namespace eShopSolution.AdminApp.Controllers
             };
             var data = await _userApiClient.GetUsersPagings(request);
             return View(data.ResultObj);
+        }
+
+        
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(RegisterRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _userApiClient.RegisterUser(request);
+            if (result.IsSuccessed)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", result.Message);
+
+            return View(request);
         }
 
         [HttpGet]
@@ -69,36 +94,18 @@ namespace eShopSolution.AdminApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Details(Guid id)
         {
-            return View();
+            var result = await _userApiClient.GetById(id);
+            return View(result.ResultObj);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(RegisterRequest request)
-        {
-            if (!ModelState.IsValid)
-                return View();
-
-            var result = await _userApiClient.RegisterUser(request);
-            if (result.IsSuccessed)
-            {
-                return RedirectToAction("Index");
-            }
-
-            ModelState.AddModelError("", result.Message);
-
-            return View(request);
-        }
-
-
 
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("Token");
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Index", "Login");
         }
     }
 }
