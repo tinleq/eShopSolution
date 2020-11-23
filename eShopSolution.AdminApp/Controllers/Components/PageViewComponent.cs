@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eShopSolution.AdminApp.Controllers.Components
 {
-    public class PageViewComponent : ViewComponent
+    public class PagerViewComponent : ViewComponent
     {
         public Task<IViewComponentResult> InvokeAsync(PagedResultBase result)
         {

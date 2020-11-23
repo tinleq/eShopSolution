@@ -29,7 +29,6 @@ namespace eShopSolution.AdminApp.Services
 
         public async Task<ApiResult<List<RoleVM>>> GetAll()
         {
-
             var sessions = _httpContextAccessor.HttpContext.Session.GetString("Token");
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
