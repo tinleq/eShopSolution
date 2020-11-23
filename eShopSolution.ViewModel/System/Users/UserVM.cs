@@ -26,5 +26,7 @@ namespace eShopSolution.ViewModel.System.Users
         
         [Display(Name = "Ngày sinh")]
         public DateTime Dob { get; set; }
+
+        public IList<string> Roles { get; set; }
     }
 }

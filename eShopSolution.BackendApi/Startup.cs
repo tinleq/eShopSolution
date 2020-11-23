@@ -1,16 +1,15 @@
 using eShopSolution.Application.Catalog.Products;
 using eShopSolution.Application.Common;
+using eShopSolution.Application.System.Roles;
 using eShopSolution.Application.System.Users;
 using eShopSolution.Data.EF;
 using eShopSolution.Data.Entities;
 using eShopSolution.Ultilities.Constants;
 using eShopSolution.ViewModel.System.Users;
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +18,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace eShopSolution.BackendApi
 {
@@ -54,6 +52,8 @@ namespace eShopSolution.BackendApi
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             
             services.AddTransient<IUserService, UserService>();
+
+            services.AddTransient<IRoleService, RoleService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
 
