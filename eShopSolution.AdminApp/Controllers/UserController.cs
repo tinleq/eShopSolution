@@ -30,6 +30,11 @@ namespace eShopSolution.AdminApp.Controllers
                 PageSize = pageSize
             };
             var data = await _userApiClient.GetUsersPagings(request);
+            ViewBag.Keyword = keyword;
+            if(TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
             return View(data.ResultObj);
         }
 
@@ -50,6 +55,7 @@ namespace eShopSolution.AdminApp.Controllers
             var result = await _userApiClient.RegisterUser(request);
             if (result.IsSuccessed)
             {
+                TempData["result"] = "success";
                 return RedirectToAction("Index");
             }
 
@@ -87,7 +93,10 @@ namespace eShopSolution.AdminApp.Controllers
 
             var result = await _userApiClient.UpdateUser(request.Id, request);
             if (result.IsSuccessed)
+            {
+                TempData["result"] = "success"; 
                 return RedirectToAction("Index");
+            }
 
             ModelState.AddModelError("", result.Message);
             return View(request);
@@ -97,6 +106,8 @@ namespace eShopSolution.AdminApp.Controllers
         public async Task<IActionResult> Details(Guid id)
         {
             var result = await _userApiClient.GetById(id);
+
+
             return View(result.ResultObj);
         }
 
@@ -106,6 +117,32 @@ namespace eShopSolution.AdminApp.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("Token");
             return RedirectToAction("Index", "Login");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            return View(new UserDeleteRequest()
+            {
+                Id = id
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(UserDeleteRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _userApiClient.Delete(request.Id);
+            if (result.IsSuccessed)
+            {
+                TempData["result"] = "Xóa người dùng thành công";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", result.Message);
+            return View(request);
         }
     }
 }
