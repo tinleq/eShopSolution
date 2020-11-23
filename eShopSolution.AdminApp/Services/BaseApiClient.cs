@@ -1,4 +1,5 @@
 ﻿using eShopSolution.Ultilities.Constants;
+using eShopSolution.ViewModel.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -13,7 +14,6 @@ namespace eShopSolution.AdminApp.Services
 {
     public class BaseApiClient
     {
-
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
