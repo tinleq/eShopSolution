@@ -1,0 +1,29 @@
+﻿using eShopSolution.ViewModel.Utilities.Slides;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace eShopSolution.ApiIntegration
+{
+    public class SlideApiClient : BaseApiClient,ISlideApiClient
+    {
+        public SlideApiClient(IHttpClientFactory httpClientFactory,
+                              IHttpContextAccessor httpContextAccessor,
+                              IConfiguration configuration) 
+            : base(httpClientFactory,
+                  httpContextAccessor,
+                  configuration)
+        {
+
+        }
+
+        public async Task<List<SlideVM>> GetAll()
+        {
+            return await GetListAsync<SlideVM>("/api/slides");
+        }
+    }
+}
