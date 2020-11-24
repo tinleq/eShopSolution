@@ -39,6 +39,9 @@ namespace eShopSolution.ViewModel.Catalog.Products
         [Display(Name = "Mã ngôn ngữ")]
         public string LanguageId { get; set; }
 
+
+        public bool? IsFeatured { get; set; }
+
         [Display(Name = "Hình thu nhỏ")]
         public IFormFile ThumbnailImage { get; set; }
     }

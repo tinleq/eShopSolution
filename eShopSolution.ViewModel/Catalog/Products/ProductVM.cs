@@ -32,6 +32,8 @@ namespace eShopSolution.ViewModel.Catalog.Products
 
         public string LanguageId { set; get; }
 
+        public bool? IsFeatured { get; set; }
+
         public List<string> Categories { get; set; } = new List<string>();
     }
 }
