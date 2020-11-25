@@ -12,5 +12,7 @@ namespace eShopSolution.WebApp.Models
         public List<SlideVM> Slides { get; set; }
 
         public List<ProductVM> FeaturedProducts { get; set; } 
+
+        public List<ProductVM> LatestProducts { get; set; }
     }
 }

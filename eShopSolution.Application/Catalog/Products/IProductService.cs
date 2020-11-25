@@ -40,5 +40,7 @@ namespace eShopSolution.Application.Catalog.Products
         Task<ApiResult<bool>> CategoryAssign(int id, CategoryAssignRequest request);
 
         Task<List<ProductVM>> GetFeaturedProducts(string languageId, int take);
+
+        Task<List<ProductVM>> GetLatestProducts(string languageId, int take);
     }
 }
