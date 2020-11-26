@@ -18,7 +18,7 @@ namespace eShopSolution.WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ISharedCultureLocalizer _loc;
+        //private readonly ISharedCultureLocalizer _loc;
         private readonly ISlideApiClient _slideApiClient;
         private readonly IProductApiClient _productApiClient;
 

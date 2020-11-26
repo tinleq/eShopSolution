@@ -9,8 +9,6 @@ namespace eShopSolution.ViewModel.Catalog.ProductImages
     {
         public int Id { get; set; }
 
-        public string ImagePath { get; set; }
-
         public string Caption { get; set; }
 
         public bool IsDefault { get; set; }

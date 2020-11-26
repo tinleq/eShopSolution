@@ -12,5 +12,9 @@ namespace eShopSolution.ViewModel.Common
 
         public bool Selected { get; set; }
 
+        public object Select()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

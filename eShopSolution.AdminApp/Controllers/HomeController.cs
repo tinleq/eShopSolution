@@ -23,7 +23,6 @@ namespace eShopSolution.AdminApp.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.message = "Homepage";
             var user = User.Identity.Name;
             return View();
         }
@@ -43,9 +42,9 @@ namespace eShopSolution.AdminApp.Controllers
         public IActionResult Language(NavigationViewModel viewModel)
         {
             HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId,
-                                          viewModel.CurrentLanguageId);
+                viewModel.CurrentLanguageId);
 
-            return RedirectToAction("Index");
+            return Redirect(viewModel.ReturnUrl);
         }
     }
 }

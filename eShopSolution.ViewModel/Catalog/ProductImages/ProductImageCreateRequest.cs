@@ -7,9 +7,6 @@ namespace eShopSolution.ViewModel.Catalog.ProductImages
 {
     public class ProductImageCreateRequest
     {
-
-        public string ImagePath { get; set; }
-
         public string Caption { get; set; }
 
         public bool IsDefault { get; set; }
