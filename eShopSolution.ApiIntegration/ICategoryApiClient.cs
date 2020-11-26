@@ -9,5 +9,7 @@ namespace eShopSolution.ApiIntegration
     public interface ICategoryApiClient
     {
         Task<List<CategoryVM>> GetAll(string languageId);
+
+        Task<CategoryVM> GetById(string languageId, int id);
     }
 }

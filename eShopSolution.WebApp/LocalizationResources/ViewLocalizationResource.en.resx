@@ -121,8 +121,16 @@
     <value>Add to</value>
     <comment>/Home/Index</comment>
   </data>
+  <data name="Add to1" xml:space="preserve">
+    <value>Add to</value>
+    <comment>/Product/Category</comment>
+  </data>
+  <data name="available products" xml:space="preserve">
+    <value>available products</value>
+    <comment>/Product/Category</comment>
+  </data>
   <data name="categoryUrl" xml:space="preserve">
-    <value>categoryUrl</value>
+    <value>categories</value>
     <comment>Layout</comment>
   </data>
   <data name="Contact" xml:space="preserve">
@@ -141,8 +149,8 @@
     <value>Featured Products</value>
     <comment>/Home/Index</comment>
   </data>
-  <data name="Itemes in your cart" xml:space="preserve">
-    <value>Itemes in your cart</value>
+  <data name="Items in your cart" xml:space="preserve">
+    <value>Items in your cart</value>
     <comment>Layout</comment>
   </data>
   <data name="Latest Products" xml:space="preserve">
@@ -153,9 +161,33 @@
     <value>Login</value>
     <comment>Layout</comment>
   </data>
+  <data name="New | Available" xml:space="preserve">
+    <value>New | Available</value>
+    <comment>/Product/Category</comment>
+  </data>
+  <data name="Price Highest first" xml:space="preserve">
+    <value>Price Highest first</value>
+    <comment>/Product/Category</comment>
+  </data>
+  <data name="Price Lowest first" xml:space="preserve">
+    <value>Price Lowest first</value>
+    <comment>/Product/Category</comment>
+  </data>
+  <data name="Product name A - Z" xml:space="preserve">
+    <value>Product name A - Z</value>
+    <comment>/Product/Category</comment>
+  </data>
+  <data name="Product name Z -A" xml:space="preserve">
+    <value>Product name Z -A</value>
+    <comment>/Product/Category</comment>
+  </data>
   <data name="productUrl" xml:space="preserve">
-    <value>productUrl</value>
+    <value>products</value>
     <comment>Layout</comment>
+  </data>
+  <data name="Sort by" xml:space="preserve">
+    <value>Sort by</value>
+    <comment>/Product/Category</comment>
   </data>
   <data name="Specials Offer" xml:space="preserve">
     <value>Specials Offer</value>
@@ -168,5 +200,9 @@
   <data name="VIEW" xml:space="preserve">
     <value>VIEW</value>
     <comment>/Home/Index</comment>
+  </data>
+  <data name="View Detail" xml:space="preserve">
+    <value>View Detail</value>
+    <comment>/Product/Category</comment>
   </data>
 </root>
