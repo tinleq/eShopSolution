@@ -121,10 +121,6 @@
     <value>Add to</value>
     <comment>/Home/Index</comment>
   </data>
-  <data name="Add to1" xml:space="preserve">
-    <value>Add to</value>
-    <comment>/Product/Category</comment>
-  </data>
   <data name="available products" xml:space="preserve">
     <value>available products</value>
     <comment>/Product/Category</comment>
@@ -177,8 +173,8 @@
     <value>Product name A - Z</value>
     <comment>/Product/Category</comment>
   </data>
-  <data name="Product name Z -A" xml:space="preserve">
-    <value>Product name Z -A</value>
+  <data name="Product name Z - A" xml:space="preserve">
+    <value>Product name Z - A</value>
     <comment>/Product/Category</comment>
   </data>
   <data name="productUrl" xml:space="preserve">
