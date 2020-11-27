@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <title>Bootshop online Shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="@ViewData["Description"]">
     <meta name="author" content="">
     <link id="callCss" rel="stylesheet" href="/themes/bootshop/bootstrap.min.css" media="screen" />
     <link href="/themes/css/base.css" rel="stylesheet" media="screen" />
@@ -32,6 +32,10 @@
                 {
                     <div class="span6">Welcome!<strong> @User.Identity.Name</strong></div>
                 }
+                else
+                {
+                    <div class="span6">Welcome!<strong> Guest!</strong></div>
+                }
                 <div class="span6">
                     <div class="pull-right">
                         <language-nav language-label="NativeName"
@@ -40,7 +44,7 @@
 
                         <a href="product_summary.html">
                             <span class="btn btn-mini btn-primary">
-                                <i class="icon-shopping-cart icon-white"></i> [ 3 ] <localize>Items in your cart</localize>
+                                <i class="icon-shopping-cart icon-white"></i> [ 3 ] Items in your cart
                             </span>
                         </a>
                     </div>
@@ -54,7 +58,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <div class="navbar-inner">
-                    <a class="brand" href="#"><img src="/themes/images/logo.png" alt="Bootsshop" /></a>
+                    <a class="brand" href="index.html"><img src="/themes/images/logo.png" alt="Bootsshop" /></a>
                     <form class="form-inline navbar-search" method="post" action="products.html">
                         <input id="srchFld" class="srchTxt" type="text" />
                         <select class="srchTxt">
