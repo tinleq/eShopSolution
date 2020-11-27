@@ -157,6 +157,10 @@
     <value>Login</value>
     <comment>Layout</comment>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+    <comment>Layout</comment>
+  </data>
   <data name="New | Available" xml:space="preserve">
     <value>New | Available</value>
     <comment>/Product/Category</comment>

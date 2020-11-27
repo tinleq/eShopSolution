@@ -161,6 +161,10 @@
     <value>Đăng nhập</value>
     <comment>Layout</comment>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+    <comment>Layout</comment>
+  </data>
   <data name="New | Available" xml:space="preserve">
     <value>Mới | sẵn có</value>
     <comment>/Product/Category</comment>
