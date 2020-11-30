@@ -1,5 +1,6 @@
 ﻿using eShopSolution.ApiIntegration;
 using eShopSolution.Ultilities.Constants;
+using eShopSolution.ViewModel.Sales;
 using eShopSolution.WebApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -91,6 +92,56 @@ namespace eShopSolution.WebApp.Controllers
 
             HttpContext.Session.SetString(SystemConstants.CartSession, JsonConvert.SerializeObject(currentCart));
             return Ok(currentCart);
+        }
+
+        public IActionResult CheckOut()
+        {
+            return View(GetCheckOutViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult CheckOut(CheckOutViewModel request)
+        {
+            var model = GetCheckOutViewModel();
+
+            var orderDetails = new List<OrderDetailVM>();
+            foreach(var item in model.CartItems)
+            {
+                orderDetails.Add(new OrderDetailVM() 
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity
+                }); 
+            }
+
+            var checkoutRequest = new CheckOutRequest()
+            {
+                Address = request.CheckOutModel.Address,
+                Name = request.CheckOutModel.Name,
+                Email = request.CheckOutModel.Email,
+                PhoneNumber = request.CheckOutModel.PhoneNumber,
+                OrderDetails = request.CheckOutModel.OrderDetails
+            };
+
+            TempData["SuccessMrg"] = "Order puschased successful";
+            return View(model);
+        }
+
+        private CheckOutViewModel GetCheckOutViewModel()
+        {
+            var session = HttpContext.Session.GetString(SystemConstants.CartSession);
+            List<CartItemViewModel> currentCart = new List<CartItemViewModel>();
+
+            if(session!= null)
+            {
+                currentCart = JsonConvert.DeserializeObject<List<CartItemViewModel>>(session);
+            }
+            var checkoutVM = new CheckOutViewModel() 
+            {
+                CartItems = currentCart,
+                CheckOutModel = new CheckOutRequest()
+            };
+            return checkoutVM;
         }
     }
 }
