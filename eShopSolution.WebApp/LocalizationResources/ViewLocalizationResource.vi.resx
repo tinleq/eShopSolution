@@ -209,4 +209,8 @@
     <value>Xem chi tiết</value>
     <comment>/Product/Category</comment>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Xin chào</value>
+    <comment>Layout</comment>
+  </data>
 </root>

@@ -205,4 +205,8 @@
     <value>View Detail</value>
     <comment>/Product/Category</comment>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+    <comment>Layout</comment>
+  </data>
 </root>
