@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using eShopSolution.Application.System.Languages;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eShopSolution.BackendApi.Controllers
 {

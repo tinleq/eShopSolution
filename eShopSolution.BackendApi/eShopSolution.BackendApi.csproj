@@ -2,7 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>89181701-e6d9-41fa-b10b-b5e4388472c5</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Controllers\CategoriesController.cs" />
+    <Content Include="Controllers\HomeController.cs" />
+    <Content Include="Controllers\LanguagesController.cs" />
+    <Content Include="Controllers\OrdersController.cs" />
+    <Content Include="Controllers\ProductsController.cs" />
+    <Content Include="Controllers\RolesController.cs" />
+    <Content Include="Controllers\SlidesController.cs" />
+    <Content Include="Controllers\UsersController.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.3.0" />
