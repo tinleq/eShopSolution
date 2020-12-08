@@ -33,7 +33,7 @@ namespace eShopSolution.BackendApi
 
         public IConfiguration Configuration { get; }
 
-       
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<eShopDbContext>(options =>
@@ -68,7 +68,18 @@ namespace eShopSolution.BackendApi
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
 
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                          builder =>
+                          {
+                              builder.WithOrigins("https://localhost:8001",
+                                                  "https://localhost:8002")
+                                                  .AllowAnyOrigin()
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+            });
 
             services.AddControllers()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
@@ -157,6 +168,7 @@ namespace eShopSolution.BackendApi
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseSwagger();
 

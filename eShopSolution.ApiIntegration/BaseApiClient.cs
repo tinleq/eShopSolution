@@ -51,22 +51,36 @@ namespace eShopSolution.ApiIntegration
 
         public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = false)
         {
-            var sessions = _httpContextAccessor
-               .HttpContext
-               .Session
-               .GetString(SystemConstants.AppSettings.Token);
-            var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri(_configuration[SystemConstants.AppSettings.BaseAddress]);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessions);
-
-            var response = await client.GetAsync(url);
-            var body = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
+            string textLog = "";
+            try
             {
-                var data = (List<T>)JsonConvert.DeserializeObject(body, typeof(List<T>));
-                return data;
+                var sessions = _httpContextAccessor
+                       .HttpContext
+                       .Session
+                       .GetString(SystemConstants.AppSettings.Token);
+                var client = _httpClientFactory.CreateClient();
+                client.BaseAddress = new Uri(_configuration[SystemConstants.AppSettings.BaseAddress]);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessions);
+                textLog = "1..." + client.BaseAddress.AbsoluteUri + "|#|" + url + "|#|";
+
+                var response = await client.GetAsync(url);
+                var body = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = (List<T>)JsonConvert.DeserializeObject(body, typeof(List<T>));
+                    return data;
+                }
+                textLog += "body: " + body;
+                System.IO.File.WriteAllText(@"D:\netcoreapp3.1\publish\WebApp\logs\WriteText.txt", textLog);
+                return null;
             }
-            throw new Exception(body);
+            catch (Exception ex)
+            {
+                textLog += ex.Message + "---inner:" + ex.InnerException.Message + "---" + ex.StackTrace;
+                System.IO.File.WriteAllText(@"D:\netcoreapp3.1\publish\WebApp\logs\WriteText.txt", textLog);
+                throw (ex);
+            }
+
         }
 
         public async Task<bool> Delete(string url)

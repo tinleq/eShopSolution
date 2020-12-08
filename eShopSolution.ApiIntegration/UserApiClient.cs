@@ -34,6 +34,10 @@ namespace eShopSolution.ApiIntegration
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
+
+            string textLog = "2..." + client.BaseAddress.AbsoluteUri + "|#|" + "/api/users/authenticate";
+            System.IO.File.WriteAllText(@"D:\netcoreapp3.1\publish\WebApp\logs\WriteText.txt", textLog);
+
             var response = await client.PostAsync("/api/users/authenticate", httpContent);
             if (response.IsSuccessStatusCode)
             {
